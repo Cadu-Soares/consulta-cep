@@ -1,25 +1,26 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Pesquisar from './Containers/Pesquisar';
+import Resultados from './Containers/Resultados';
+import Erro from './Containers/Erro';
+import Carregando from './Containers/Carregando';
+ 
+const App = (props) => {
 
-function App() {
+  const [changePage, setChangePage] = useState(0);
+
+  const handleClick = () => { 
+    setChangePage((changePage + 1) % 4);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+        <button onClick={handleClick}>Próxima Página</button>
+        {changePage == 0 ? <Pesquisar /> : null}
+        {changePage == 1 ? <Resultados result={props.result} /> : null}
+        {changePage == 2 ? <Erro errorMessage="Não foi possível realizar a consulta desejada, tente mais tarde" /> : null}
+        {changePage == 3 ? <Carregando /> : null}
+    </>
   );
 }
-
 export default App;
