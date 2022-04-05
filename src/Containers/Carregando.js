@@ -1,19 +1,16 @@
 import React from 'react';
 
-const Carregando = () => {
+const Carregando = (props) => {
   return (
-      <div className="App">
-          <div className="container">
-            <header className="App-header">
-              <p>
-                Carregando Resultados...
-              </p>
-              <br />
-              <button type="button" className="btn btn-primary btn-lg">CANCELAR</button> 
-            </header>
-          </div>
-      </div>
-    );
+
+      <header className="App-header">
+        <p>
+          Carregando Resultados...
+        </p>
+        <br />
+        <button type="button" className="btn btn-primary btn-lg" onClick={() => props.navigationBtn("PESQUISA")}>CANCELAR</button> 
+      </header>
+  );
 }
 
 export default Carregando;

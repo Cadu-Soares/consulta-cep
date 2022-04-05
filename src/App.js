@@ -4,22 +4,27 @@ import Pesquisar from './Containers/Pesquisar';
 import Resultados from './Containers/Resultados';
 import Erro from './Containers/Erro';
 import Carregando from './Containers/Carregando';
- 
 const App = (props) => {
 
-  const [changePage, setChangePage] = useState(0);
+  const [changePage, setChangePage] = useState("PESQUISA");
 
-  const handleClick = () => { 
-    setChangePage((changePage + 1) % 4);
+  const navigationBtn = (changePage) => { 
+    console.log(`Navegando para a tela:${changePage}`)
+    setChangePage(changePage);
   }
 
   return (
     <>
-        <button onClick={handleClick}>Próxima Página</button>
-        {changePage == 0 ? <Pesquisar /> : null}
-        {changePage == 1 ? <Resultados result={props.result} /> : null}
-        {changePage == 2 ? <Erro errorMessage="Não foi possível realizar a consulta desejada, tente mais tarde" /> : null}
-        {changePage == 3 ? <Carregando /> : null}
+    <div className="App">
+      <header className="App-header">
+          <br />
+          <button className='btn btn-danger btn-lg' onClick={ navigationBtn }>Próxima Página</button>
+          {changePage === "PESQUISA" ? <Pesquisar navigationBtn={ navigationBtn } /> : null}
+          {changePage === "RESULTADO"? <Resultados result={props.result} navigationBtn={ navigationBtn } /> : null}
+          {changePage === "ERRO" ? <Erro errorMessage="Não foi possível realizar a consulta desejada, tente mais tarde" navigationBtn={ navigationBtn } /> : null}
+          {changePage === "CARREGANDO" ? <Carregando navigationBtn={ navigationBtn } /> : null}
+      </header>
+    </div>
     </>
   );
 }
