@@ -16,7 +16,7 @@ const Resultados = (props) => {
       <br />
       {elements}
       <br />
-      <button type="button" className="btn btn-primary btn-lg" onClick={() => props.navigationBtn("PESQUISA")}>NOVA CONSULTA</button> 
+      <button type="button" className="btn btn-primary btn-lg" onClick={() => props.navigationBtn("PESQUISA")}>CONSULTAR</button> 
     </header>
   );
 }

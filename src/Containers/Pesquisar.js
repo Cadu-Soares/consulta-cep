@@ -8,7 +8,7 @@ import cep from 'cep-promise';
 const Pesquisar = (props) => {
 
   const setResultado = props.setResultado;
-
+   
   const [searchCep, setSearchCep] = useState("");
 
   const handleChange = (e) => {
@@ -28,18 +28,21 @@ const Pesquisar = (props) => {
     props.navigationBtn("RESULTADO") 
   }
 
+  // -- Tratamento do sucesso na busca --- //
+  const handleSearch = () => {
+    props.ticket.current++;
+    const currentTicket = props.ticket.current
+    cep(searchCep)
+    .then(result => currentTicket === props.ticket.current && handleSuccess(result))
+    .catch(err => currentTicket === props.ticket.current && handleError(err))
+  }
+
+// -- Tratamento do erro na busca --- //
   const handleError = (err) => {
     const errorMessage = err.message;
-    setErrorMessage(errorMessage);
-    props.navigationBtn("ERRO") 
+    props.setErrorMessage(errorMessage);
+    props.navigationBtn("ERRO");
   }
-
-  const handleSearch = () => {
-    cep(searchCep)
-    .then(handleSuccess)
-    .catch(handleError)
-  }
-
 
   return (
     <>
@@ -50,7 +53,7 @@ const Pesquisar = (props) => {
         <input type='number' placeholder='CEP' value={searchCep}  onChange={handleChange} />
         <br />
         <p>Estado atual: {searchCep}</p>
-        <button type="button" className="btn btn-primary btn-lg" onClick={() => handleSearch() }>Consultar</button> 
+        <button type="button" className="btn btn-primary btn-lg" onClick={() => handleSearch()} >CONSULTAR</button> 
       </header>
     </>
   );

@@ -1,6 +1,13 @@
 import React from 'react';
 
 const Carregando = (props) => {
+
+  // -- Tratamento do botão de cancelamento --- //
+  const handleCancel = () => {
+    props.ticket.current++;
+    props.navigationBtn("PESQUISA")
+  }
+
   return (
 
       <header className="App-header">
@@ -8,7 +15,7 @@ const Carregando = (props) => {
           Carregando Resultados...
         </p>
         <br />
-        <button type="button" className="btn btn-primary btn-lg" onClick={() => props.navigationBtn("PESQUISA")}>CANCELAR</button> 
+        <button type="button" className="btn btn-primary btn-lg" onClick={handleCancel}>CANCELAR</button> 
       </header>
   );
 }
