@@ -1,29 +1,56 @@
 import React, { useState } from 'react';
+import cep from 'cep-promise';
 
- const Pesquisar = (props) => {
-  
+ // const numbersOnly = (stg) => {
+  //   return stg.replace(/[^\d]/g, '')
+  // };
+
+const Pesquisar = (props) => {
+
+  const setResultado = props.setResultado;
+
   const [searchCep, setSearchCep] = useState("");
-
-  const numbersOnly = (stg) => {
-    return stg.replace(/[^\d]/g, '')
-  };
 
   const handleChange = (e) => {
     const value = e.target.value;
-    setSearchCep(numbersOnly(value))
+    setSearchCep(value)
   }
 
-  
+  const handleSuccess = (dadosCep) => {
+    const resultado = {
+      "Estado": dadosCep.state,
+      "Cidade": dadosCep.city,
+      "Bairro": dadosCep.neighborhood,
+      "Logradouro": dadosCep.street
+    }
+
+    setResultado(resultado)
+    props.navigationBtn("RESULTADO") 
+  }
+
+  const handleError = (err) => {
+    const errorMessage = err.message;
+    setErrorMessage(errorMessage);
+    props.navigationBtn("ERRO") 
+  }
+
+  const handleSearch = () => {
+    cep(searchCep)
+    .then(handleSuccess)
+    .catch(handleError)
+  }
+
+
   return (
     <>
       <header className="App-header">
         <p>
-          Digite o CEP: 
+          Digite o CEP que deseja consultar : 
         </p>
-        <input type='number' placeholder='CEP' value={numbersOnly(searchCep)}  onChange={handleChange} />
+        <input type='number' placeholder='CEP' value={searchCep}  onChange={handleChange} />
         <br />
         <p>Estado atual: {searchCep}</p>
-        <button type="button" className="btn btn-primary btn-lg" onClick={() => props.navigationBtn("RESULTADO") }>Consultar</button> 
+        <button type="button" className="btn btn-primary btn-lg" onClick={() => handleSearch() }>Consultar</button> 
       </header>
     </>
   );
