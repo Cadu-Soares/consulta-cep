@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Carregando = (props) => {
+  
 
   // -- Tratamento do botão de cancelamento --- //
   const handleCancel = () => {

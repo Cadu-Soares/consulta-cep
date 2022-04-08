@@ -6,9 +6,7 @@ import cep from 'cep-promise';
   // };
 
 const Pesquisar = (props) => {
-
-  const setResultado = props.setResultado;
-   
+  
   const [searchCep, setSearchCep] = useState("");
 
   const handleChange = (e) => {
@@ -24,7 +22,7 @@ const Pesquisar = (props) => {
       "Logradouro": dadosCep.street
     }
 
-    setResultado(resultado)
+    props.setResultado(resultado)
     props.navigationBtn("RESULTADO") 
   }
 
@@ -32,6 +30,7 @@ const Pesquisar = (props) => {
   const handleSearch = () => {
     props.ticket.current++;
     const currentTicket = props.ticket.current
+    props.navigationBtn("CARREGANDO") 
     cep(searchCep)
     .then(result => currentTicket === props.ticket.current && handleSuccess(result))
     .catch(err => currentTicket === props.ticket.current && handleError(err))

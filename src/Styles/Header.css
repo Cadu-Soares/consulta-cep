@@ -1,0 +1,59 @@
+.menu {
+  height: 3rem;
+  z-index: 1;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid white;
+  border-bottom: 1px solid #ffd400;
+  padding: 0.5rem 0.75 rem;
+  background: url(https://buscacepinter.correios.com.br/core/templates/bunker/img/logo-ect.svg) no-repeat center #f5f3f0;
+  background-size: auto 50%;
+}
+
+.hamburger-toggle {
+  flex: 0 0 2rem;
+  margin-right: 1rem;
+  background: url('../Assets/menu-toggle2.png') no-repeat center left;
+  background-size: 2rem;
+  user-select: none;
+  cursor: pointer;
+  height: 30px;
+}
+
+.menu-area { 
+  top: 0;
+  right: 0;
+  z-index: 999;
+  display: flex;
+  width: 0px;
+  height: 100vh;
+  background: #f5f3f0;
+  overflow-y: auto;
+  overflow-x:  hidden;
+  transition: width 0.1s linear 0.3s; 
+  
+  font-size: 1rem;
+  box-sizing: border-box;
+  font-family: 'Trebuchet MS', 'arial', 'helvetica', 'Open Sans', sans-serif;
+  font-weight: bold;
+}
+
+.menu-area ul, .menu-area li {
+  padding: 0;
+  list-style: none;
+}
+
+.menu-area li {
+  display: block;
+  padding: 10px;
+  padding-right: 65px;
+  cursor: pointer;
+  color: #0080b2;
+}
+
+.menu-area li:hover {
+  background: #DDD;
+}

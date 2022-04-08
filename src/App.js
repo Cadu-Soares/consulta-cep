@@ -4,6 +4,7 @@ import Pesquisar from './Containers/Pesquisar';
 import Resultados from './Containers/Resultados';
 import Erro from './Containers/Erro';
 import Carregando from './Containers/Carregando';
+import Header from './Components/Header';
 
 const App = (props) => {
 
@@ -28,6 +29,7 @@ const App = (props) => {
   return (
     <>
     <div className="App">
+      <Header />
       <header className="App-header">
           <br />
           {changePage === "PESQUISA" ? <Pesquisar navigationBtn={ navigationBtn } setResultado={setResultado} setErrorMessage={setErrorMessage} ticket={ticket} /> : null}
