@@ -45,7 +45,7 @@ const Pesquisar = (props) => {
 
   return (
     <>
-      <header className="App-header">
+      <form action="">
         <p>
           Digite o CEP que deseja consultar : 
         </p>
@@ -53,7 +53,7 @@ const Pesquisar = (props) => {
         <br />
         <p>Estado atual: {searchCep}</p>
         <button type="button" className="btn btn-primary btn-lg" onClick={() => handleSearch()} >CONSULTAR</button> 
-      </header>
+      </form>
     </>
   );
 }

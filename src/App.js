@@ -5,6 +5,7 @@ import Resultados from './Containers/Resultados';
 import Erro from './Containers/Erro';
 import Carregando from './Containers/Carregando';
 import Header from './Components/Header';
+import Footer from './Components/Footer';
 
 const App = (props) => {
 
@@ -29,14 +30,14 @@ const App = (props) => {
   return (
     <>
     <div className="App">
+    <main>
       <Header />
-      <header className="App-header">
-          <br />
-          {changePage === "PESQUISA" ? <Pesquisar navigationBtn={ navigationBtn } setResultado={setResultado} setErrorMessage={setErrorMessage} ticket={ticket} /> : null}
-          {changePage === "RESULTADO"? <Resultados result={resultado} navigationBtn={ navigationBtn } /> : null}
-          {changePage === "ERRO" ? <Erro errorMessage={errorMessage} navigationBtn={ navigationBtn } /> : null}
-          {changePage === "CARREGANDO" ? <Carregando navigationBtn={ navigationBtn } ticket={ticket} /> : null}
-      </header>
+            {changePage === "PESQUISA" ? <Pesquisar navigationBtn={ navigationBtn } setResultado={setResultado} setErrorMessage={setErrorMessage} ticket={ticket} /> : null}
+            {changePage === "RESULTADO"? <Resultados result={resultado} navigationBtn={ navigationBtn } /> : null}
+            {changePage === "ERRO" ? <Erro errorMessage={errorMessage} navigationBtn={ navigationBtn } /> : null}
+            {changePage === "CARREGANDO" ? <Carregando navigationBtn={ navigationBtn } ticket={ticket} /> : null}
+        <Footer />
+      </main>
     </div>
     </>
   );
