@@ -14,6 +14,7 @@ const Pesquisar = (props) => {
     setSearchCep(value)
   }
 
+    // -- Tratamento do sucesso na busca --- //
   const handleSuccess = (dadosCep) => {
     const resultado = {
       "Estado": dadosCep.state,
@@ -26,7 +27,14 @@ const Pesquisar = (props) => {
     props.navigationBtn("RESULTADO") 
   }
 
-  // -- Tratamento do sucesso na busca --- //
+// -- Tratamento do erro na busca --- //
+const handleError = (err) => {
+  const errorMessage = err.message;
+  props.setErrorMessage(errorMessage);
+  props.navigationBtn("ERRO");
+}
+
+ // -- Implementação do Cep-promise ---//
   const handleSearch = () => {
     props.ticket.current++;
     const currentTicket = props.ticket.current
@@ -36,22 +44,17 @@ const Pesquisar = (props) => {
     .catch(err => currentTicket === props.ticket.current && handleError(err))
   }
 
-// -- Tratamento do erro na busca --- //
-  const handleError = (err) => {
-    const errorMessage = err.message;
-    props.setErrorMessage(errorMessage);
-    props.navigationBtn("ERRO");
-  }
-
   return (
     <>
       <form action="">
+        <h3 className='titulo'>Consulta CEP</h3>
         <p>
           Digite o CEP que deseja consultar : 
         </p>
         <input type='number' placeholder='CEP' value={searchCep}  onChange={handleChange} />
         <br />
-        <p>Estado atual: {searchCep}</p>
+        {/* <p>Estado atual: {searchCep}</p> */}
+        <br />
         <button type="button" className="btn btn-primary btn-lg" onClick={() => handleSearch()} >CONSULTAR</button> 
       </form>
     </>

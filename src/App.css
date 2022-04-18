@@ -42,6 +42,12 @@ main {
   color: black;
 }
 
+.titulo {
+  color: #00416b;
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
 form {
   width: 763px;
   height: 560px;

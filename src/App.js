@@ -12,7 +12,7 @@ const App = (props) => {
   
   const [resultado, setResultado] = useState({});
 
-  // -- Tratamento do erro na consulta -- //
+  // -- Estado do Erro -- //
   const [errorMessage, setErrorMessage] = useState('');
 
 

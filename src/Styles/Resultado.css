@@ -1,0 +1,46 @@
+.table-resul {
+  display: flex;
+  justify-content: center;
+  
+  
+}
+
+table {
+  text-indent: initial;
+  border-collapse: inherit;
+  display: table;
+}
+
+thead {
+  display: table-header-group;
+  /* box-shadow: 0 0.3rem 0.5rem #cacaca; */
+}
+
+tr {
+  padding: 1rem;
+  border: none;
+  display: flex;
+  justify-content: space-around;
+  margin: 0.4rem;
+  margin-bottom: 0.9rem;
+  border-radius: 0.7rem;
+  background-color: #0071ad;
+  font-size: 16px;
+}
+
+th {
+  position: sticky;
+  top: 0;
+  padding: 0;
+  display: block;
+  font-weight: normal;
+  background: #0071ad;
+  color: white;
+  line-height: normal;
+  font-size: 1rem;
+  text-align: center;
+}
+
+span {
+  font-size: 5px;
+}

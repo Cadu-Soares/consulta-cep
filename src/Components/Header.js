@@ -4,10 +4,10 @@ import '../Styles/Header.css'
 const Header = () =>{
   
   const [showMenu, setShowMenu] = useState(false)
-  const [display, setDisplay] = useState('0px')
+  const [display, setDisplay] = useState('none')
   
   useEffect(() => {
-    setDisplay((state) => showMenu ? '0px' : '200px');
+    setDisplay((state) => showMenu ? 'flex' : 'none');
   }, [showMenu]);
 
   return (
@@ -16,7 +16,7 @@ const Header = () =>{
             <a className='hamburger-toggle' onClick={ e => setShowMenu(state => !state)}>
             </a>
             <br/>
-            <aside  className="menu-area" style={{width:display}} >
+            <aside  className="menu-area" style={{display:display}} >
               <ul>
                 <li>Voltar ao menu</li>
                 <li>CLique e Retire</li>

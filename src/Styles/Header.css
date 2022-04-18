@@ -28,8 +28,8 @@
   /* top: 0;
   right: 0; */
   z-index: 999;
-  display: flex;
-  width: 0px;
+  display: none;
+  width: 200px;
   height: 100vh;
   background: #f5f3f0;
   overflow-y: auto;
