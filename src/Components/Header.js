@@ -10,12 +10,11 @@ const Header = () => {
   }, [showMenu]);
 
   return (
-    <>
-      <div className="menu">
-        <a
-          className="hamburger-toggle"
-          onClick={(e) => setShowMenu((state) => !state)}
-        />
+      <div className="menu"
+        onClick={() => setShowMenu(!showMenu)}
+        onMouseLeave={() => setShowMenu(false)}
+      >
+        <a className="hamburger-toggle"/>
         <br />
         <aside className="menu-area" style={{ display: display }}>
           <ul>
@@ -27,7 +26,6 @@ const Header = () => {
           </ul>
         </aside>
       </div>
-    </>
   );
 };
 
